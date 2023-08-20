@@ -10,7 +10,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddCors(options => options.AddPolicy(name: CORSAllowSpecificOrigins,
-                                                      policy => policy.WithOrigins("http://192.168.1.7", "http://192.168.1.5", "http://192.168.1.3","http://localhost:19006").AllowAnyOrigin().AllowAnyMethod()));
+                                                      policy => policy.WithOrigins("http://localhost:3000", "http://192.168.1.7", 
+                                                      "http://192.168.1.5", "http://192.168.1.3",
+                                                      "http://127.0.0.1:19006",
+                                                      "http://192.168.1.8:19000", "exp://192.168.1.8:19000")));
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
                                                     options.UseSqlServer(connectionString));
